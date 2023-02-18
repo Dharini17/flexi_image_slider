@@ -5,7 +5,7 @@ Image slider with auto scroll, dots indicator
 <table>
    <tr>
       <td>
-         <img width="250px" src="https://raw.githubusercontent.com/Dharini17/flexiimageslider/master/assets/screenshot.png">
+         <img width="250px" src="https://raw.githubusercontent.com/Dharini17/flexi_image_slider/master/assets/screenshot.png">
       </td>    
     </tr>
 </table>
