@@ -1,4 +1,4 @@
-#flexi_image_slider
+## flexi_image_slider
 
 Image slider with auto scroll, dots indicator
 

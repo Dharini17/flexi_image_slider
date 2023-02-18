@@ -1,7 +1,7 @@
 name: flexi_image_slider
-description: A starting point for Dart libraries or applications.
-version: 1.0.0
-repository: https://github.com/Dharini17/flexiimageslider
+description: Image slider with auto scroll, dots indicator
+version: 1.0.1
+repository: https://github.com/Dharini17/flexi_image_slider
 
 environment:
   sdk: '>=2.19.2 <3.0.0'
