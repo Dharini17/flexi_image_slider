@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flexi_image_slider/flexi_image_slider.dart';
 
@@ -50,6 +51,15 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 
+  List<String> arrayImages = [
+
+  "https://i.ibb.co/7yBRJcc/Screenshot-2023-02-18-at-12-04-20-PM.png",
+  "https://i.ibb.co/925Nc43/Screenshot-2023-02-18-at-12-04-28-PM.png",
+  "https://i.ibb.co/5WDVHnv/Screenshot-2023-02-18-at-12-04-46-PM.png",
+  "https://i.ibb.co/ZfjCq7G/Screenshot-2023-02-18-at-12-04-53-PM.png",
+
+  ];
+
   @override
   Widget build(BuildContext context) {
 
@@ -57,26 +67,94 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Column(
-
-          mainAxisAlignment: MainAxisAlignment.center,
+      body: ListView(
+                padding: EdgeInsets.only(top: 15,bottom: 15),
           children: <Widget>[
 
+              Text("Style1",textAlign: TextAlign.center,),
+
+              const SizedBox(height: 10,),
+
               flexi_image_slider(
-                  arrayImages: [
-
-                      "https://i.ibb.co/7yBRJcc/Screenshot-2023-02-18-at-12-04-20-PM.png",
-                      "https://i.ibb.co/925Nc43/Screenshot-2023-02-18-at-12-04-28-PM.png",
-                      "https://i.ibb.co/5WDVHnv/Screenshot-2023-02-18-at-12-04-46-PM.png",
-                      "https://i.ibb.co/ZfjCq7G/Screenshot-2023-02-18-at-12-04-53-PM.png",
-
-                  ],
+                  style: enumStyle.Style1,
                   context: context,
-                  aspectRatio: 16/9
+                  aspectRatio: 16/9,
+                itemCount: arrayImages.length,
+                itemBuilder: (BuildContext context, int index) {
+
+                  return funcDisplayImage("${arrayImages[ index % arrayImages.length ]}",BoxFit.fitHeight);
+
+                },
+
               ),
+
+
+            const SizedBox(height: 20,),
+
+            Text("Style2",textAlign: TextAlign.center,),
+
+            const SizedBox(height: 10,),
+
+            flexi_image_slider(
+              style: enumStyle.Style2,
+              context: context,
+              aspectRatio: 16/9,
+              itemCount: arrayImages.length,
+              itemBuilder: (BuildContext context, int index) {
+
+                return funcDisplayImage("${arrayImages[ index % arrayImages.length ]}",BoxFit.fitHeight);
+
+              },
+            ),
+
+            const SizedBox(height: 20,),
+
+            Text("Style3",textAlign: TextAlign.center,),
+
+            const SizedBox(height: 10,),
+
+            flexi_image_slider(
+
+              style: enumStyle.Style3,
+              context: context,
+              aspectRatio: 16/9,
+              arrayItems: List.generate(arrayImages.length, (index){
+                return ClipRRect(
+                  borderRadius: BorderRadius.circular(5),
+                  child: funcDisplayImage("${arrayImages[ index % arrayImages.length ]}",BoxFit.fitHeight),
+                );
+              }),
+            ),
 
           ],
         ),
     );
   }
+
+  static CachedNetworkImage funcDisplayImage(String strImageURL, BoxFit varBoxType) {
+
+    return CachedNetworkImage(
+      imageUrl: "$strImageURL",
+      imageBuilder: (context, imageProvider) => Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: imageProvider,
+            fit: varBoxType,
+            // fit: BoxFit.fitWidth
+
+            // colorFilter: ColorFilter.mode(Colors.red, BlendMode.colorBurn)
+          ),
+        ),
+      ),
+      errorWidget: (context, url, error) => Container(
+        // height: 80,width: 250,
+        decoration: BoxDecoration(
+
+          shape: BoxShape.rectangle,
+        ),
+        child: Icon(Icons.image_rounded,color: Colors.grey,),
+      ),
+    );
+  }
+
 }
