@@ -29,17 +29,45 @@ dependencies:
 
 ```dart
 
+//STYLE 1 =========================================================================
 flexi_image_slider(
-arrayImages: [
-
-"https://i.ibb.co/7yBRJcc/Screenshot-2023-02-18-at-12-04-20-PM.png",
-"https://i.ibb.co/925Nc43/Screenshot-2023-02-18-at-12-04-28-PM.png",
-"https://i.ibb.co/5WDVHnv/Screenshot-2023-02-18-at-12-04-46-PM.png",
-"https://i.ibb.co/ZfjCq7G/Screenshot-2023-02-18-at-12-04-53-PM.png",
-
-],
+style: enumStyle.Style1,
 context: context,
-aspectRatio: 16/9
+aspectRatio: 16/9,
+itemCount: arrayImages.length,
+itemBuilder: (BuildContext context, int index) {
+
+return funcDisplayImage("${arrayImages[ index % arrayImages.length ]}",BoxFit.fitHeight);
+
+},
+
+),
+
+//STYLE 2 =========================================================================
+flexi_image_slider(
+style: enumStyle.Style2,
+context: context,
+aspectRatio: 16/9,
+itemCount: arrayImages.length,
+itemBuilder: (BuildContext context, int index) {
+
+return funcDisplayImage("${arrayImages[ index % arrayImages.length ]}",BoxFit.fitHeight);
+
+},
+),
+
+//STYLE 3 =========================================================================
+flexi_image_slider(
+
+style: enumStyle.Style3,
+context: context,
+aspectRatio: 16/9,
+arrayItems: List.generate(arrayImages.length, (index){
+return ClipRRect(
+borderRadius: BorderRadius.circular(5),
+child: funcDisplayImage("${arrayImages[ index % arrayImages.length ]}",BoxFit.fitHeight),
+);
+}),
 ),
 
 

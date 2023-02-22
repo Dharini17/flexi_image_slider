@@ -75,6 +75,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
               const SizedBox(height: 10,),
 
+            //STYLE 1 =========================================================================
               flexi_image_slider(
                   style: enumStyle.Style1,
                   context: context,
@@ -95,6 +96,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
             const SizedBox(height: 10,),
 
+            //STYLE 2 =========================================================================
             flexi_image_slider(
               style: enumStyle.Style2,
               context: context,
@@ -113,6 +115,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
             const SizedBox(height: 10,),
 
+            //STYLE 3 =========================================================================
             flexi_image_slider(
 
               style: enumStyle.Style3,
