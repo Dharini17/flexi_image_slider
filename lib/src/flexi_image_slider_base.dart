@@ -4,7 +4,6 @@ import 'package:flexi_image_slider/src/Style2.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:dots_indicator/dots_indicator.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 
 import 'Style3.dart';
 
@@ -41,31 +40,6 @@ class flexi_image_slider extends StatelessWidget{
      this.arrayItems
    });
 
-  static CachedNetworkImage funcDisplayImage(String strImageURL, BoxFit varBoxType) {
-
-    return CachedNetworkImage(
-      imageUrl: "$strImageURL",
-      imageBuilder: (context, imageProvider) => Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: imageProvider,
-            fit: varBoxType,
-            // fit: BoxFit.fitWidth
-
-            // colorFilter: ColorFilter.mode(Colors.red, BlendMode.colorBurn)
-          ),
-        ),
-      ),
-      errorWidget: (context, url, error) => Container(
-        // height: 80,width: 250,
-        decoration: BoxDecoration(
-
-          shape: BoxShape.rectangle,
-        ),
-        child: Icon(Icons.image_rounded,color: Colors.grey,),
-      ),
-    );
-  }
 
   funcInitializeValues(){
 
