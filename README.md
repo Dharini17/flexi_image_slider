@@ -37,7 +37,7 @@ aspectRatio: 16/9,
 itemCount: arrayImages.length,
 itemBuilder: (BuildContext context, int index) {
 
-return funcDisplayImage("${arrayImages[ index % arrayImages.length ]}",BoxFit.fitHeight);
+return funcDisplayImage("${arrayImages[ index ]}",BoxFit.fitHeight);
 
 },
 
@@ -51,7 +51,7 @@ aspectRatio: 16/9,
 itemCount: arrayImages.length,
 itemBuilder: (BuildContext context, int index) {
 
-return funcDisplayImage("${arrayImages[ index % arrayImages.length ]}",BoxFit.fitHeight);
+return funcDisplayImage("${arrayImages[ index ]}",BoxFit.fitHeight);
 
 },
 ),
@@ -65,10 +65,36 @@ aspectRatio: 16/9,
 arrayItems: List.generate(arrayImages.length, (index){
 return ClipRRect(
 borderRadius: BorderRadius.circular(5),
-child: funcDisplayImage("${arrayImages[ index % arrayImages.length ]}",BoxFit.fitHeight),
+child: funcDisplayImage("${arrayImages[ index ]}",BoxFit.fitHeight),
 );
 }),
 ),
+
+static CachedNetworkImage funcDisplayImage(String strImageURL, BoxFit varBoxType) {
+
+return CachedNetworkImage(
+imageUrl: "$strImageURL",
+imageBuilder: (context, imageProvider) => Container(
+decoration: BoxDecoration(
+image: DecorationImage(
+image: imageProvider,
+fit: varBoxType,
+// fit: BoxFit.fitWidth
+
+// colorFilter: ColorFilter.mode(Colors.red, BlendMode.colorBurn)
+),
+),
+),
+errorWidget: (context, url, error) => Container(
+// height: 80,width: 250,
+decoration: BoxDecoration(
+
+shape: BoxShape.rectangle,
+),
+child: Icon(Icons.image_rounded,color: Colors.grey,),
+),
+);
+}
 
 
 ```

@@ -83,7 +83,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 itemCount: arrayImages.length,
                 itemBuilder: (BuildContext context, int index) {
 
-                  return funcDisplayImage("${arrayImages[ index % arrayImages.length ]}",BoxFit.fitHeight);
+                  return funcDisplayImage("${arrayImages[ index ]}",BoxFit.fitHeight);
 
                 },
 
@@ -104,7 +104,7 @@ class _MyHomePageState extends State<MyHomePage> {
               itemCount: arrayImages.length,
               itemBuilder: (BuildContext context, int index) {
 
-                return funcDisplayImage("${arrayImages[ index % arrayImages.length ]}",BoxFit.fitHeight);
+                return funcDisplayImage("${arrayImages[ index ]}",BoxFit.fitHeight);
 
               },
             ),
@@ -124,7 +124,7 @@ class _MyHomePageState extends State<MyHomePage> {
               arrayItems: List.generate(arrayImages.length, (index){
                 return ClipRRect(
                   borderRadius: BorderRadius.circular(5),
-                  child: funcDisplayImage("${arrayImages[ index % arrayImages.length ]}",BoxFit.fitHeight),
+                  child: funcDisplayImage("${arrayImages[ index ]}",BoxFit.fitHeight),
                 );
               }),
             ),
