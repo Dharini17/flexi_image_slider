@@ -67,61 +67,30 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: ListView(
-                padding: EdgeInsets.only(top: 15,bottom: 15),
-          children: <Widget>[
+      body: Center(
+        child: flexi_image_slider(
 
-            const Padding(
-              padding:  EdgeInsets.only(top:10,bottom: 10),
-              child: Text("Style1",textAlign: TextAlign.center,),
-            ),
+          //required fields ---------
 
-            //STYLE 1
-            flexi_image_slider(
+          context: context,
+          aspectRatio: 16/9,
+          arrayImages: arrayImages,
 
-                style: enumStyle.Style1,
-                context: context,
-                aspectRatio: 16/9,
-                autoScroll: false,
-                boxFit: BoxFit.fill,
-                arrayImages: arrayImages
-            ),
+          //optional fields ------------
 
-            const Padding(
-              padding:  EdgeInsets.only(top:10,bottom: 10),
-              child: Text("Style2",textAlign: TextAlign.center,),
-            ),
-
-            //STYLE 2
-            flexi_image_slider(
-
-                style: enumStyle.Style2,
-                context: context,
-                aspectRatio: 16/9,
-                autoScroll: true,
-                boxFit: BoxFit.fill,
-                arrayImages: arrayImages
-            ),
-
-
-             const Padding(
-               padding:  EdgeInsets.only(top:10,bottom: 10),
-               child: Text("Style3",textAlign: TextAlign.center,),
-             ),
-
-            //STYLE 3
-            flexi_image_slider(
-
-              style: enumStyle.Style3,
-              context: context,
-              aspectRatio: 16/9,
-              autoScroll: true,
-              boxFit: BoxFit.fill,
-              arrayImages: arrayImages
-          ),
-
-          ],
+          autoScroll: true,
+          viewportFraction: 0.8,
+          boxFit: BoxFit.fill,
+          showIndicator: true,
+          showIndicatorBottom: true,
+          duration: const Duration(seconds: 4),
+          borderRadius: 5,
+          onTap: (int index){
+            print("$index index clicked");
+            //handle your click events
+          },
         ),
+      ),
     );
   }
 
