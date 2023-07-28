@@ -3,6 +3,9 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'Utils.dart';
 
+enum IndicatorPosition { none, overImage, afterImage }
+enum IndicatorAlignment { left, right, center }
+
 class flexi_image_slider extends StatelessWidget{
 
   BuildContext context;
@@ -12,10 +15,11 @@ class flexi_image_slider extends StatelessWidget{
   List<String> arrayImages;
   final double viewportFraction;
   final Function? onTap;
-  final bool showIndicator;
-  final bool showIndicatorBottom;
+  final IndicatorPosition indicatorPosition;
+  final IndicatorAlignment indicatorAlignment;
   final Duration duration;
   final double borderRadius;
+  final Color indicatorColor;
 
    flexi_image_slider({
      super.key,
@@ -26,10 +30,11 @@ class flexi_image_slider extends StatelessWidget{
      required this.arrayImages,
      this.viewportFraction = 1.0,
      this.onTap,
-     this.showIndicator = false,
-     this.showIndicatorBottom = false,
+     this.indicatorPosition = IndicatorPosition.afterImage,
+     this.indicatorAlignment = IndicatorAlignment.center,
      this.duration = const Duration(seconds: 3),
-     this.borderRadius = 0.0
+     this.borderRadius = 0.0,
+     this.indicatorColor = Colors.black
    });
 
   Timer? timer;
@@ -41,18 +46,21 @@ class flexi_image_slider extends StatelessWidget{
       child: ValueListenableBuilder(
           valueListenable: newIndexValue,
           builder: (context,value,child){
-            return DotsIndicator(
-              dotsCount: arrayImages.length,
-              position: double.parse(
-                  "${value%arrayImages.length}"),
-              decorator: DotsDecorator(
-                size: const Size.square(5.0),
-                activeSize: Size(15.0, 5.0),
-                color: Theme.of(context).colorScheme.onBackground.withOpacity(0.37),
-                // Inactive color
-                activeColor: Theme.of(context).colorScheme.primary,
-                activeShape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(5.0)),
+            return Align(
+              alignment: indicatorAlignment == IndicatorAlignment.left ? Alignment.centerLeft : indicatorAlignment == IndicatorAlignment.right ? Alignment.centerRight : Alignment.center,
+              child: DotsIndicator(
+                dotsCount: arrayImages.length,
+                position: double.parse(
+                    "${value%arrayImages.length}"),
+                decorator: DotsDecorator(
+                  size: const Size.square(5.0),
+                  activeSize: Size(15.0, 5.0),
+                  color: Colors.grey.shade400,
+                  // Inactive color
+                  activeColor: indicatorColor,
+                  activeShape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(5.0)),
+                ),
               ),
             );
           }),
@@ -102,7 +110,7 @@ class flexi_image_slider extends StatelessWidget{
 
                   Positioned(
                     left: 0,right: 0,bottom: 0,
-                    child:  showIndicator && !showIndicatorBottom ?
+                    child:  indicatorPosition ==  IndicatorPosition.overImage ?
                     funcDotsIndicator()
                         :
                     const SizedBox(),
@@ -112,7 +120,7 @@ class flexi_image_slider extends StatelessWidget{
               )
           ),
 
-          showIndicator && showIndicatorBottom ?
+          indicatorPosition ==  IndicatorPosition.afterImage ?
           funcDotsIndicator()
               :
           const SizedBox()

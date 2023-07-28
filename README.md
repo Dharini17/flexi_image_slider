@@ -34,9 +34,7 @@ dependencies:
 
 ## Usage
 
-```dart
-
-        Usage - 
+        //required fields
 
         aspectRatio: set you slider height like 1.0,1.5,2.0 etc...
         arrayImages: pass your List<String> type array which contains image urls
@@ -46,39 +44,43 @@ dependencies:
         autoScroll: auto scroll enable disable by set true/false here
         viewportFraction: set its value between 0.5 to 0.9 for display left & right side image preview
         boxFit: set your image content mode 
-        showIndicator: set true/false  to show indicator
-        showIndicatorBottom: set true/false to show your indicator below slider or over slider
+        indicatorPosition: set indicator position like none,over slider or display at bottom of slider
+        indicatorAlignment: where you want to set your slider like left,right or center
         duration: set your slider image changed speed by setting duration 
+        indicatorColor: set selected indicator color
         borderRadius: set any double value for give radius to your image
         onTap : want to execute some action on image click use this
-        
-        How to use -
 
+```dart
+      
         //import package
         import 'package:flexi_image_slider/flexi_image_slider.dart';
 
 
         flexi_image_slider(
-        
-                //required fields ---------
-                
-                context: context,
-                aspectRatio: 16/9,
-                arrayImages: arrayImages,
-                
-                //optional fields ------------
-                
-                autoScroll: true,
-                viewportFraction: 0.8,
-                boxFit: BoxFit.fill,
-                showIndicator: true,
-                showIndicatorBottom: true,
-                duration: const Duration(seconds: 4),
-                borderRadius: 5,
-                onTap: (int index){
-                print("$index index clicked");
-                //handle your click events
-                },
+
+            //required fields ---------
+    
+            context: context,
+            aspectRatio: 16/14,
+            arrayImages: arrayImages,
+    
+            //optional fields ------------
+    
+            autoScroll: true,
+            viewportFraction: 0.8,
+            boxFit: BoxFit.fill,
+            indicatorPosition: IndicatorPosition.overImage,//IndicatorPosition.afterImage,IndicatorPosition.overImage,IndicatorPosition.none
+            indicatorAlignment: IndicatorAlignment.left,//IndicatorAlignment.left,IndicatorAlignment.right,IndicatorAlignment.center
+            duration: const Duration(seconds: 4),
+            indicatorColor: Colors.blue,
+            borderRadius: 0,
+            onTap: (int index){
+            print("$index index clicked");
+            //handle your click events
+            },
         ),
 
 ```
+
+NOTE: Images used only for demo purpose

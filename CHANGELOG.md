@@ -1,8 +1,13 @@
+## 1.0.6
+
+- indicator color change option
+- indicator position option
+
 ## 1.0.5
 
 - add attributes like,
 - Duration
-- Borderradius
+- Border radius
 - Indicator
 - ViewPortFraction for left,right preview
 - click event

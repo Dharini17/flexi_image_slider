@@ -53,10 +53,10 @@ class _MyHomePageState extends State<MyHomePage> {
 
   List<String> arrayImages = [
 
-  "https://neilpatel.com/wp-content/uploads/2017/08/blog.jpg",
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_9es5pEx_zEWpotZu7uvsP4cAtd7QorgZhQ&usqp=CAU",
-    "https://thumbor.forbes.com/thumbor/fit-in/900x510/https://www.forbes.com/advisor/wp-content/uploads/2022/06/How_To_Start_A_Blog_-_article_image.jpg",
-    "https://blog.hubspot.com/hs-fs/hubfs/blog-examples-2.jpg?width=595&height=400&name=blog-examples-2.jpg"
+    "https://rukminim2.flixcart.com/image/832/832/xif0q/t-shirt/5/9/6/m-all-rbc-white-one-nb-nicky-boy-original-imagpycw749kqzdz.jpeg?q=70",
+    "https://rukminim2.flixcart.com/image/832/832/xif0q/t-shirt/w/8/l/l-all-rbc-white-one-nb-nicky-boy-original-imagpyct8f5hhauz.jpeg?q=70",
+    "https://rukminim2.flixcart.com/image/832/832/xif0q/t-shirt/4/2/c/s-all-rbc-one-nb-nicky-boy-original-imagpycxgmnxretx.jpeg?q=70",
+    "https://rukminim2.flixcart.com/image/832/832/xif0q/t-shirt/8/3/7/l-all-rbc-white-one-nb-nicky-boy-original-imagpycbphvjfmk4.jpeg?q=70"
 
   ];
 
@@ -67,13 +67,14 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Center(
+      body: Padding(
+        padding: const EdgeInsets.only(left: 10,right: 10),
         child: flexi_image_slider(
 
           //required fields ---------
 
           context: context,
-          aspectRatio: 16/9,
+          aspectRatio: 16/14,
           arrayImages: arrayImages,
 
           //optional fields ------------
@@ -81,10 +82,11 @@ class _MyHomePageState extends State<MyHomePage> {
           autoScroll: true,
           viewportFraction: 0.8,
           boxFit: BoxFit.fill,
-          showIndicator: true,
-          showIndicatorBottom: true,
+          indicatorPosition: IndicatorPosition.overImage,//IndicatorPosition.afterImage,IndicatorPosition.overImage,IndicatorPosition.none
+          indicatorAlignment: IndicatorAlignment.left,//IndicatorAlignment.left,IndicatorAlignment.right,IndicatorAlignment.center
           duration: const Duration(seconds: 4),
-          borderRadius: 5,
+          indicatorColor: Colors.blue,
+          borderRadius: 0,
           onTap: (int index){
             print("$index index clicked");
             //handle your click events
