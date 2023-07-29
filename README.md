@@ -47,7 +47,8 @@ dependencies:
         indicatorPosition: set indicator position like none,over slider or display at bottom of slider
         indicatorAlignment: where you want to set your slider like left,right or center
         duration: set your slider image changed speed by setting duration 
-        indicatorColor: set selected indicator color
+        indicatorActiveColor: set active color for indicator,
+        indicatorActiveColor: set deactive color for indicator,
         borderRadius: set any double value for give radius to your image
         onTap : want to execute some action on image click use this
 
@@ -73,7 +74,8 @@ dependencies:
             indicatorPosition: IndicatorPosition.overImage,//IndicatorPosition.afterImage,IndicatorPosition.overImage,IndicatorPosition.none
             indicatorAlignment: IndicatorAlignment.left,//IndicatorAlignment.left,IndicatorAlignment.right,IndicatorAlignment.center
             duration: const Duration(seconds: 4),
-            indicatorColor: Colors.blue,
+            indicatorActiveColor: Colors.blue,
+            indicatorDeactiveColor: Colors.grey,
             borderRadius: 0,
             onTap: (int index){
             print("$index index clicked");

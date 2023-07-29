@@ -80,12 +80,13 @@ class _MyHomePageState extends State<MyHomePage> {
           //optional fields ------------
 
           autoScroll: true,
-          viewportFraction: 0.8,
+          viewportFraction: 1.0,
           boxFit: BoxFit.fill,
           indicatorPosition: IndicatorPosition.overImage,//IndicatorPosition.afterImage,IndicatorPosition.overImage,IndicatorPosition.none
           indicatorAlignment: IndicatorAlignment.left,//IndicatorAlignment.left,IndicatorAlignment.right,IndicatorAlignment.center
           duration: const Duration(seconds: 4),
-          indicatorColor: Colors.blue,
+          indicatorActiveColor: Colors.blue,
+          indicatorDeactiveColor: Colors.grey,
           borderRadius: 0,
           onTap: (int index){
             print("$index index clicked");

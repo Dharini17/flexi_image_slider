@@ -1,3 +1,7 @@
+## 1.0.7
+
+- indicator Active & Deactive color set
+
 ## 1.0.6
 
 - indicator color change option

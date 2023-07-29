@@ -19,7 +19,8 @@ class flexi_image_slider extends StatelessWidget{
   final IndicatorAlignment indicatorAlignment;
   final Duration duration;
   final double borderRadius;
-  final Color indicatorColor;
+  final Color indicatorActiveColor;
+  final Color indicatorDeactiveColor;
 
    flexi_image_slider({
      super.key,
@@ -34,7 +35,8 @@ class flexi_image_slider extends StatelessWidget{
      this.indicatorAlignment = IndicatorAlignment.center,
      this.duration = const Duration(seconds: 3),
      this.borderRadius = 0.0,
-     this.indicatorColor = Colors.black
+     this.indicatorActiveColor = Colors.black,
+     this.indicatorDeactiveColor = Colors.grey,
    });
 
   Timer? timer;
@@ -55,9 +57,8 @@ class flexi_image_slider extends StatelessWidget{
                 decorator: DotsDecorator(
                   size: const Size.square(5.0),
                   activeSize: Size(15.0, 5.0),
-                  color: Colors.grey.shade400,
-                  // Inactive color
-                  activeColor: indicatorColor,
+                  color: indicatorDeactiveColor,
+                  activeColor: indicatorActiveColor,
                   activeShape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(5.0)),
                 ),
